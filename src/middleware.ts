@@ -5,8 +5,6 @@ import { NextRequest, NextResponse } from "next/server";
 const isProtectedRoute = createRouteMatcher(["/dashboard", "/product"]);
 const isPublicRoute = createRouteMatcher(["/sign-in", "/sign-up", "/"]);
 
-const isPublicApiRoute = createRouteMatcher(["/api/webhook/clerk"])
-
 export default clerkMiddleware((auth, req: NextRequest) => {
     const { userId } = auth();
 

@@ -1,12 +1,18 @@
 import { Schema, Document, models, Model, model } from "mongoose";
 
 export interface User extends Document {
+    clerkUserId: string;
     email: string;
-    name: string;
+    name?: string;
 }
-
+    
 const userSchema = new Schema(
     {
+        clerkUserId: {
+            type: String,
+            required: true,
+            unique: true,
+        },
         email: {
             type: String,
             required: [true, "email is required"],
@@ -18,6 +24,7 @@ const userSchema = new Schema(
         },
         name: {
             type: String,
+            required: false
         },
     },
     { timestamps: true }
